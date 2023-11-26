@@ -1,11 +1,16 @@
+import { Button } from '@/components/ui/button'
 import React from 'react'
 
 type Props = {}
 
-const page = (props: Props) => {
+const IssuePage = (props: Props) => {
   return (
-    <div>page</div>
+    <div className='p-4'>
+      <Button className='text-white'>
+        New Issue
+      </Button>
+    </div>
   )
 }
 
-export default page
+export default IssuePage
