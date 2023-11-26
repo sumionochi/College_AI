@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import { useToast } from "@/components/ui/use-toast"
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { AlertCircle } from 'lucide-react'
+import { AlertCircle, Loader2 } from 'lucide-react'
 import {zodResolver} from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/createIssueSchema'
 import {z} from 'zod';
@@ -29,6 +29,7 @@ const NewIssuePage = () => {
   });
   const router = useRouter();
   const [error, setError] = useState('')
+  const [isSubmit, setSubmit] = useState(false)
   const {toast} = useToast();
   return (
     <div className='p-8 space-y-4 max-w-xl'>
@@ -45,9 +46,12 @@ const NewIssuePage = () => {
       }
       <form onSubmit={handleSubmit(async(data)=>{
       try {
+        setSubmit(true)
         await axios.post('/api/issues', data);
-        router.push('/issues');
+        router.push('/Issues');
       } catch (error) {
+        console.error("Error:", error);
+        setSubmit(false)
         setError('Something unexpected has happened');
       }      
     })} className='max-w-2xl space-y-4'>
@@ -56,7 +60,7 @@ const NewIssuePage = () => {
         <Controller name='description' control={control} render={({field})=><SimpleMDE placeholder='Description' {...field} className='bg-secondary rounded-lg'/>}/>
         {errors.description && <p className='text-red-800 font-semibold'>Description is Required</p>}
         <Button className='rounded-full'>
-            Submit New Issue
+            {!isSubmit ? <p>New Issue</p> : <Loader2 className=' animate-spin'/>}
         </Button>
       </form>
     </div>
