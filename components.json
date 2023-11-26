@@ -5,8 +5,8 @@
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.ts",
-    "css": "sec/app/globals.css",
-    "baseColor": "stone",
+    "css": "src/app/globals.tsx",
+    "baseColor": "zinc",
     "cssVariables": true
   },
   "aliases": {
