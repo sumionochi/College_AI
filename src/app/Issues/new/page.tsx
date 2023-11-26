@@ -14,6 +14,7 @@ import { AlertCircle, Loader2 } from 'lucide-react'
 import {zodResolver} from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/createIssueSchema'
 import {z} from 'zod';
+import prisma from '@/lib/db/prisma'
 //using axios to submit the form to API
 
 type IssueForm = z.infer<typeof createIssueSchema>
@@ -31,6 +32,7 @@ const NewIssuePage = () => {
   const [error, setError] = useState('')
   const [isSubmit, setSubmit] = useState(false)
   const {toast} = useToast();
+
   return (
     <div className='p-8 space-y-4 max-w-xl'>
       {error && 
