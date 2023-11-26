@@ -1,3 +1,4 @@
+import IssueStatusBadge from '@/components/IssueStatusBadge'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import prisma from '@/lib/db/prisma'
@@ -29,7 +30,7 @@ const IssuePage = async (props: Props) => {
           {issues.map(issue => (
             <TableRow className='hover:bg-transparent cursor-pointer' key={issue.id}>
               <TableHead className='hover:text-semibold text-secondary'>{issue.title}</TableHead>
-              <TableHead className='text-secondary'>{issue.status}</TableHead>
+              <TableHead className=''><IssueStatusBadge status={issue.status}/></TableHead>
               <TableHead className='text-secondary hidden md:table-cell'>{issue.createdAt.toDateString()}</TableHead>
             </TableRow>
           ))}

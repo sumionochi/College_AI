@@ -50,6 +50,7 @@ const NewIssuePage = () => {
       try {
         setSubmit(true)
         await axios.post('/api/issues', data);
+        window.location.href = "/Issues"
         router.push('/Issues');
       } catch (error) {
         console.error("Error:", error);
