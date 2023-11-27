@@ -4,12 +4,14 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import prisma from '@/lib/db/prisma'
 import Link from 'next/link'
 import React from 'react'
+import delay from 'delay'
 
 type Props = {}
 
 const IssuePage = async (props: Props) => {
   const issues = await prisma.issue.findMany();
-
+  
+  await delay(1000)
   return (
     <div className='p-4 space-y-4'>
       <Button className=''>
@@ -29,7 +31,7 @@ const IssuePage = async (props: Props) => {
         <TableBody>
           {issues.map(issue => (
             <TableRow className='hover:bg-transparent cursor-pointer' key={issue.id}>
-              <TableHead className='hover:text-semibold text-secondary'>{issue.title}</TableHead>
+              <TableHead className='hover:text-semibold text-secondary'><Link href={`/Issues/${(issue.id)}`}>{issue.title}</Link></TableHead>
               <TableHead className=''><IssueStatusBadge status={issue.status}/></TableHead>
               <TableHead className='text-secondary hidden md:table-cell'>{issue.createdAt.toDateString()}</TableHead>
             </TableRow>
