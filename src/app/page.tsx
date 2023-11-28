@@ -59,15 +59,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        {/* <div className='flex my-4 flex-col p-8 rounded-xl max-w-7xl mx-auto bg-[#0D2427] text-white'>
-          <div className='flex flex-col gap-4'>
-            <h1 className='text-start font-semibold text-3xl md:text-5xl xl:text-6xl'>The Mini AI Classroom</h1>
-            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/650/685/datas/original.png" className='rounded-md object-cover' />
-            <div></div> 
-            <h1 className='text-start font-semibold text-3xl md:text-5xl xl:text-6xl'>Future Plans</h1>
-            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/647/802/datas/original.png" className='rounded-md object-cover' />
-          </div>
-        </div> */}
         <div className='flex px-4 pt-1 bg-white/20 text-white justify-between gap-4 flex-row items-center text-primary h-14 absolute bottom-0 w-full'>
         <h2 className='text-white'>© 2023 Context.AI</h2>
         <div className='flex flex-row gap-4 justify-center items-center'>

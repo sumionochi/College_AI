@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Themetoggle } from './ui/Themetoggle'
 import {useSession} from 'next-auth/react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { Button } from './ui/button'
+import { User } from 'lucide-react'
 
 type Props = {}
 
@@ -23,7 +27,23 @@ const Navbar = (props: Props) => {
           {status === 'authenticated' && (   
           <div className={'rounded-3xl gap-2 flex-row sm:flex-row sm:gap-4 px-8 py-4 bg-black/50 hover:bg-black/70 flex justify-center items-center text-sm text-white outline outline-2 outline-white/30 hover:outline-white/30'}>
             {links.map(link=><Link key={link.href} className={`${link.href === currPath ? 'font-semibold' : 'font-base'} hover:text-white/50 transition-all`} href={link.href}>{link.label}</Link>)}
-            <Link href={'/api/auth/signout'}>Log Out</Link>
+            <DropdownMenu >
+              <DropdownMenuTrigger>
+                      <Avatar>
+                        <AvatarImage referrerPolicy='no-referrer' src={session.user!.image!}/>
+                        <AvatarFallback><User className='bg-black rounded-full'/></AvatarFallback>
+                      </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align='end' className='rounded-lg shadow-md p-2 bg-secondary border border-gray-300'>
+                <DropdownMenuItem>
+                  {session.user?.name && (<p className=' font-medium text-primary'>{session.user.name}</p>)}
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  {session.user?.email && (<p className='font-medium text-primary'>{session.user.email}</p>)}
+                </DropdownMenuItem>
+                  <Link href={'/api/auth/signout'}><Button className='p-2 hover:bg-transparent bg-transparent text-red-500'>Log Out</Button></Link>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
           )}
           {status === 'unauthenticated' && (

@@ -9,12 +9,16 @@ import { notFound} from 'next/navigation'
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
 import DeleteIssueBtn from '../components/DeleteIssueBtn'
+import { getServerSession } from 'next-auth'
+import authOptions from '@/app/auth/authOptions'
+import AssignSelect from './AssignSelect'
 
 interface Props {
     params: {id:string}
 }
 
 const IssueDetailPage = async({params}: Props) => {
+  const session = await getServerSession(authOptions)
   const issue = await prisma.issue.findUnique({
     where: {id: String(params.id)}
   })  
@@ -29,13 +33,14 @@ const IssueDetailPage = async({params}: Props) => {
       <div className='max-w-3xl m-4 p-4 space-y-2 bg-secondary rounded-md'>
         <div className='flex flex-row justify-between'>
           <h1 className='font-semibold text-2xl'>{issue.title}</h1>
-          <div className='flex flex-col sm:flex-row gap-2'>
+          {session && <div className='flex flex-col sm:flex-row gap-2'>
+            <AssignSelect issues={issue}/>
             <Button className=''>
               <PencilLine className='w-4 mr-2'/>
               <Link href={`/Issues/${issue.id}/edit`}>Edit Issue</Link>
             </Button>
             <DeleteIssueBtn issueId={issue.id}/>
-          </div>
+          </div>}
         </div>
         <div className='flex flex-row gap-2'>
           <IssueStatusBadge status={issue.status}/>
