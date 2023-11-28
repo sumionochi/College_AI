@@ -1,13 +1,14 @@
 import IssueStatusBadge from '@/components/IssueStatusBadge'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import prisma from '@/lib/db/prisma'
+import axios from 'axios'
 import { Pencil, PencilLine, Trash } from 'lucide-react'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { notFound} from 'next/navigation'
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
+import DeleteIssueBtn from '../components/DeleteIssueBtn'
 
 interface Props {
     params: {id:string}
@@ -33,27 +34,7 @@ const IssueDetailPage = async({params}: Props) => {
               <PencilLine className='w-4 mr-2'/>
               <Link href={`/Issues/${issue.id}/edit`}>Edit Issue</Link>
             </Button>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button className='bg-red-500'>
-                <Trash className='w-4 mr-2'/>
-                <Link href={`/Issues/${issue.id}/delete`}>Delete Issue</Link>
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Confirm the Deletion?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete your
-                    account and remove your data from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction className='bg-red-500'>Delete</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <DeleteIssueBtn issueId={issue.id}/>
           </div>
         </div>
         <div className='flex flex-row gap-2'>
