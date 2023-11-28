@@ -1,0 +1,10 @@
+1. cache 
+> data catch layer - fetch external data
+> stored in file system and perma until redeployment
+> full route cache - static and dynamic runtime
+> router cache for server side
+
+2. Separation of file concerns
+
+3. Single responsibility principle
+

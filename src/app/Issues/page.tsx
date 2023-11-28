@@ -1,14 +1,13 @@
 import IssueStatusBadge from '@/components/IssueStatusBadge'
 import { Button } from '@/components/ui/button'
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import prisma from '@/lib/db/prisma'
-import Link from 'next/link'
-import React from 'react'
 import delay from 'delay'
+import Link from 'next/link'
 
 type Props = {}
 
-const IssuePage = async (props: Props) => {
+const IssuePage = async (props: Props) => { 
   const issues = await prisma.issue.findMany();
   
   await delay(1000)
@@ -31,7 +30,7 @@ const IssuePage = async (props: Props) => {
         <TableBody>
           {issues.map(issue => (
             <TableRow className='hover:bg-transparent cursor-pointer' key={issue.id}>
-              <TableHead className='hover:text-semibold text-secondary'><Link href={`/Issues/${(issue.id)}`}>{issue.title}</Link></TableHead>
+              <TableHead className='hover:text-semibold text-secondary underline underline-offset-2 hover:no-underline'><Link href={`/Issues/${(issue.id)}`}>{issue.title}</Link></TableHead>
               <TableHead className=''><IssueStatusBadge status={issue.status}/></TableHead>
               <TableHead className='text-secondary hidden md:table-cell'>{issue.createdAt.toDateString()}</TableHead>
             </TableRow>
@@ -41,5 +40,7 @@ const IssuePage = async (props: Props) => {
     </div>
   )
 }
+
+export const dynamic = 'force-dynamic';
 
 export default IssuePage
