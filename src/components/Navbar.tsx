@@ -13,7 +13,7 @@ import { User } from 'lucide-react'
 type Props = {}
 
 const Navbar = (props: Props) => {
-  const links = [{label:'Dashboard', href:'/'},{label:'Issues', href:'/Issues'}]
+  const links = [{label:'Dashboard', href:'/dashboard'},{label:'Issues', href:'/Issues'}]
   
   /*to highlight the opened page*/
   const currPath = usePathname();
