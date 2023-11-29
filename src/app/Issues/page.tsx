@@ -9,6 +9,8 @@ import { Status } from '@prisma/client'
 import Pagination from '@/components/Pagination'
 import AIChatBox from '@/components/AIChatBox'
 import AIChatButton from '@/components/AIChatButton'
+import LatestIssue from '@/components/LatestIssue'
+import IssueChart from '@/components/IssueChart'
 
 interface Props {
   searchParams: {status:Status, page:string}
@@ -31,8 +33,12 @@ const IssuePage = async ({searchParams}:Props) => {
 
   const issueCount = await prisma.issue.count({where: {status}})
   console.log(page, pageSize, issueCount)
+  const open = await prisma.issue.count({where:{status:'OPEN'}})  
+  const closed = await prisma.issue.count({where:{status:'CLOSED'}})  
+  const inProgress = await prisma.issue.count({where:{status:'IN_PROGRESS'}})  
   return (
-    <div className='p-4 space-y-4 flex items-center flex-col'>
+    <div>
+      <div className='p-4 space-y-4 flex items-center flex-col'>
       <div className='flex flex-row items-center max-w-2xl gap-4'>
         <IssueFilter/>
         <AIChatButton/>
@@ -57,6 +63,7 @@ const IssuePage = async ({searchParams}:Props) => {
         </TableBody>
       </Table>
       <Pagination pageSize={pageSize} currPage={page} itemCount={issueCount}/>
+      </div>   
     </div>
   )
 }

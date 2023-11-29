@@ -11,7 +11,10 @@ const Dashboard = async(props: Props) => {
   const inProgress = await prisma.issue.count({where:{status:'IN_PROGRESS'}})  
 
   return (
-    <IssueChart open={open} inProgress={inProgress} closed={closed}></IssueChart>
+    <div>
+          <IssueChart open={open} inProgress={inProgress} closed={closed}></IssueChart>
+<LatestIssue open={open} inProgress={inProgress} closed={closed}/>
+    </div>
   )
 }
 
