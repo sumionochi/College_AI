@@ -17,6 +17,9 @@ import {z} from 'zod';
 import prisma from '@/lib/db/prisma'
 import { Issue } from '@prisma/client'
 import SimpleMDE from 'react-simplemde-editor'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Switch } from '@/components/ui/switch'
 //using axios to submit the form to API
 
 type IssueFormData = z.infer<typeof createIssueSchema>
@@ -24,6 +27,12 @@ type IssueFormData = z.infer<typeof createIssueSchema>
 interface Form {
   title: string;
   description: string;
+  // desiredAmt: string;
+  // annualAmt: string;
+  // fullName: string;
+  // businessType: string;
+  // phoneNo: string;
+  // tele: string;
   issue?: Issue
 }
 
@@ -37,7 +46,7 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
   const {toast} = useToast();
 
   return (
-    <div className='p-8 space-y-4 max-w-xl'>
+    <div className='p-8 space-y-4 w-full'>
       {error && 
         <div>
           <Alert className='bg-red-500 text-white outline-none'>
@@ -52,22 +61,59 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
       <form onSubmit={handleSubmit(async(data)=>{
       try {
         setSubmit(true)
+        console.log('reached')
         if(issue) axios.patch('/api/issues/' + issue.id, data);
         else await axios.post('/api/issues', data);
-        window.location.href = "/Issues"
-        router.push('/Issues');
+        window.location.href = "/apply"
+        router.push('/apply');
       } catch (error) {
         console.error("Error:", error);
         setSubmit(false)
         setError('Something unexpected has happened');
       }      
-    })} className='max-w-2xl space-y-4'>
-        <Input defaultValue={issue?.title} placeholder='Title' {...register('title')}/>
+    })} className='max-w-2xl space-y-4 mx-auto bg-white/50 p-6 rounded-md'>
+        <h1 className='text-center text-xl font-semibold'>Micro-Loan Application</h1>
+        
+        <div className='flex flex-col sm:flex-row gap-4'>
+        <Input id='amount' placeholder='Desired Amount'/>
+        <Input id='income' placeholder='Annual Income'/>
+        </div>
+
+        <Input id='amount' placeholder='Full Name'/>
+
+        <div className='flex flex-col sm:flex-row gap-4'>
+        <Input id='amount' placeholder='Business Type'/>
+        <Input id='income' placeholder='Phone No.'/>
+        </div>
+
+        <div className='flex flex-col sm:flex-row gap-4'>
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Telecom Provider" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem className='cursor-pointer' value="Jio">Jio</SelectItem>
+              <SelectItem className='cursor-pointer' value="Airtel">Airtel</SelectItem>
+              <SelectItem className='cursor-pointer' value="BSNL">BSNL</SelectItem>
+              <SelectItem className='cursor-pointer' value="Quadrant">Quadrant</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <div className="flex max-w-sm items-center space-x-2">
+          <Switch id="concent" />
+          <Label className='text-red-500' htmlFor="concent">Concent to Access your Telecom Data and GeoLocation to build the Metric.</Label>
+        </div>
+        </div>
+        
+        <Input defaultValue={issue?.title} placeholder='Title of your Micro-Loan Application form' {...register('title')}/>
         {errors.title && <p className=' text-red-800 font-semibold'>Title is Required</p>}
-        <Controller  defaultValue={issue?.description} name='description' control={control} render={({field})=><SimpleMDE placeholder='Description' {...field} className='bg-secondary rounded-lg'/>}/>
+        
+        <Controller  defaultValue={issue?.description} name='description' control={control} render={({field})=><SimpleMDE placeholder='Details about your Micro-Loan Application to support your claim and increase the possibility to receive a compensation.' {...field} className='bg-secondary rounded-lg'/>}/>
         {errors.description && <p className='text-red-800 font-semibold'>Description is Required</p>}
-        <Button className='rounded-full'>
-          {issue ? 'Update Issue ' : 'Submit New Issue '}{' '}{!isSubmit ? <p> </p> : <p className='ml-2'><Loader2 className=' animate-spin'/></p>}
+        
+        <Button className='rounded-md'>
+          {issue ? 'Update Application ' : 'Submit '}{' '}{!isSubmit ? <p> </p> : <p className='ml-2'><Loader2 className=' animate-spin'/></p>}
         </Button>
       </form>
     </div>

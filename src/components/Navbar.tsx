@@ -13,7 +13,7 @@ import { User } from 'lucide-react'
 type Props = {}
 
 const Navbar = (props: Props) => {
-  const links = [{label:'Dashboard', href:'/dashboard'},{label:'Issues', href:'/Issues'}]
+  const links = [{label:'Apply', href:'/Issues/new'},{label:'Admin Dashboard', href:'/Issues'}]
   
   /*to highlight the opened page*/
   const currPath = usePathname();
@@ -48,11 +48,10 @@ const Navbar = (props: Props) => {
           )}
           {status === 'unauthenticated' && (
           <div className={'rounded-3xl gap-2 flex-row sm:flex-row sm:gap-4 px-8 py-4 bg-black/50 hover:bg-black/70 flex justify-center items-center text-sm text-white outline outline-2 outline-white/30 hover:outline-white/30'}>
-          <Link href={'/api/auth/signin'}>Log In</Link>
+          <Link href={'/api/auth/signin'}>Log In / Sign Up</Link>
           </div>
           
           )}
-          
           <Themetoggle/>
         </div>
       </nav>

@@ -1,3 +1,4 @@
+import IssueChart from '@/components/IssueChart'
 import LatestIssue from '@/components/LatestIssue'
 import prisma from '@/lib/db/prisma'
 import React from 'react'
@@ -10,7 +11,7 @@ const Dashboard = async(props: Props) => {
   const inProgress = await prisma.issue.count({where:{status:'IN_PROGRESS'}})  
 
   return (
-    <LatestIssue open={open} inProgress={inProgress} closed={closed}></LatestIssue>
+    <IssueChart open={open} inProgress={inProgress} closed={closed}></IssueChart>
   )
 }
 

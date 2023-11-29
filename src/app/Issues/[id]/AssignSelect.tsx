@@ -14,7 +14,7 @@ const AssignSelect = ({issues}:{issues:Issue}) => {
         staleTime: 60 * 1000,
         retry: 3
     })
-    if(error) return null
+    if(error?.message) return null
     console.log(issues.assignedToUserId)
     return (
         <Select 

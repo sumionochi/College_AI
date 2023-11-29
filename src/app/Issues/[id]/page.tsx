@@ -30,14 +30,14 @@ const IssueDetailPage = async({params}: Props) => {
 
   return (
     <div>
-      <div className='max-w-3xl m-4 p-4 space-y-2 bg-secondary rounded-md'>
+      <div className='max-w-4xl mx-auto m-4 p-4 space-y-2 bg-secondary rounded-md'>
         <div className='flex flex-row justify-between'>
-          <h1 className='font-semibold text-2xl'>{issue.title}</h1>
+          <h1 className='font-semibold text-2xl mr-2'>{issue.title}</h1>
           {session && <div className='flex flex-col sm:flex-row gap-2'>
             <AssignSelect issues={issue}/>
             <Button className=''>
               <PencilLine className='w-4 mr-2'/>
-              <Link href={`/Issues/${issue.id}/edit`}>Edit Issue</Link>
+              <Link href={`/Issues/${issue.id}/edit`}>Accept</Link>
             </Button>
             <DeleteIssueBtn issueId={issue.id}/>
           </div>}

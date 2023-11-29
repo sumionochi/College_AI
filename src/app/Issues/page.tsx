@@ -7,6 +7,8 @@ import Link from 'next/link'
 import IssueFilter from '../list/IssueFilter'
 import { Status } from '@prisma/client'
 import Pagination from '@/components/Pagination'
+import AIChatBox from '@/components/AIChatBox'
+import AIChatButton from '@/components/AIChatButton'
 
 interface Props {
   searchParams: {status:Status, page:string}
@@ -29,19 +31,14 @@ const IssuePage = async ({searchParams}:Props) => {
 
   const issueCount = await prisma.issue.count({where: {status}})
   console.log(page, pageSize, issueCount)
-  await delay(1000)
   return (
     <div className='p-4 space-y-4 flex items-center flex-col'>
-      <div className='flex flex-row items-center max-w-xl gap-4'>
-        <Button className=''>
-          <Link href='/Issues/new'>
-            New Issue
-          </Link>
-        </Button>
+      <div className='flex flex-row items-center max-w-2xl gap-4'>
         <IssueFilter/>
+        <AIChatButton/>
       </div>
-      <Table className='bg-primary mx-auto rounded-lg max-w-xl'>
-        <TableCaption className='text-secondary bg-primary p-2 max-w-sm rounded-lg mx-auto'>A list of your recent invoices.</TableCaption>
+      <Table className='bg-primary mx-auto rounded-lg max-w-3xl'>
+        <TableCaption className='text-secondary bg-primary p-2 max-w-sm rounded-lg mx-auto'>A list of recent Loan Applications.</TableCaption>
         <TableHeader>
           <TableRow className='hover:bg-transparent'>
             <TableHead className='text-secondary'>Issue</TableHead>
@@ -64,6 +61,5 @@ const IssuePage = async ({searchParams}:Props) => {
   )
 }
 
-export const dynamic = 'force-dynamic';
 
 export default IssuePage

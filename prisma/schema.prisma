@@ -14,6 +14,12 @@ model Issue {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   title            String
   description      String
+  // desiredAmt       String
+  // annualAmt        String
+  // fullName         String
+  // businessType     String
+  // phoneNo          String
+  // tele             Tele     @default(JIO)
   status           Status   @default(OPEN)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -29,6 +35,13 @@ enum Status {
   IN_PROGRESS
   CLOSED
 }
+
+// enum Tele {
+//   JIO
+//   AIRTEL
+//   BSNL
+//   QUADRANT
+// }
 
 model Notes {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId

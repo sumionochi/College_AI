@@ -30,7 +30,7 @@ const DeleteIssueBtn = ({issueId}: Props) => {
         <AlertDialogTrigger asChild>
                 <Button className='bg-red-500 hover:bg-red-500/70'>
                     <Trash className='w-4 mr-2'/>
-                    Delete Issue
+                    Halt
                 </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
