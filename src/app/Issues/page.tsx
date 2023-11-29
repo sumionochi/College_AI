@@ -31,19 +31,23 @@ const IssuePage = async ({searchParams}:Props) => {
     take: pageSize
   });
 
-  const issueCount = await prisma.issue.count({where: {status}})
-  console.log(page, pageSize, issueCount)
   const open = await prisma.issue.count({where:{status:'OPEN'}})  
   const closed = await prisma.issue.count({where:{status:'CLOSED'}})  
   const inProgress = await prisma.issue.count({where:{status:'IN_PROGRESS'}})  
+
+  const issueCount = await prisma.issue.count({where: {status}})
   return (
-    <div>
-      <div className='p-4 space-y-4 flex items-center flex-col'>
+    <div className='flex flex-col items-center'>
+      <div className='p-4 flex flex-col gap-4 w-1/2'>
+      <LatestIssue open={open} inProgress={inProgress} closed={closed}/>
+      <IssueChart open={open} inProgress={inProgress} closed={closed}></IssueChart>
+      </div>
+      <div className='p-4 space-y-4 flex flex-1 items-center flex-col w-1/2'>
       <div className='flex flex-row items-center max-w-2xl gap-4'>
         <IssueFilter/>
         <AIChatButton/>
       </div>
-      <Table className='bg-primary mx-auto rounded-lg max-w-3xl'>
+      <Table className='bg-primary rounded-lg mx-auto'>
         <TableCaption className='text-secondary bg-primary p-2 max-w-sm rounded-lg mx-auto'>A list of recent Loan Applications.</TableCaption>
         <TableHeader>
           <TableRow className='hover:bg-transparent'>
@@ -67,6 +71,5 @@ const IssuePage = async ({searchParams}:Props) => {
     </div>
   )
 }
-
 
 export default IssuePage

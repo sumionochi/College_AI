@@ -9,11 +9,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
 import { User } from 'lucide-react'
+import AIChatButton from './AIChatButton'
 
 type Props = {}
 
 const Navbar = (props: Props) => {
-  const links = [{label:'Apply', href:'/Issues/new'},{label:'Admin Dashboard', href:'/Issues'}]
+  const links = [{label:'Apply', href:'/Issues/new'},{label:'Admin Panel', href:'/Issues'}]
   
   /*to highlight the opened page*/
   const currPath = usePathname();
@@ -41,6 +42,8 @@ const Navbar = (props: Props) => {
                 <DropdownMenuItem>
                   {session.user?.email && (<p className='font-medium text-primary'>{session.user.email}</p>)}
                 </DropdownMenuItem>
+                  <Link href={'/feature'}><Button className='p-2 hover:bg-transparent bg-transparent text-green-700'>Features</Button></Link>
+                  <Link href={'/pricing'}><Button className='p-2 hover:bg-transparent bg-transparent text-green-700'>Pricing</Button></Link>
                   <Link href={'/api/auth/signout'}><Button className='p-2 hover:bg-transparent bg-transparent text-red-500'>Log Out</Button></Link>
               </DropdownMenuContent>
             </DropdownMenu>

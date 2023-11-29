@@ -20,6 +20,7 @@ import SimpleMDE from 'react-simplemde-editor'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
+import { Separator } from '@/components/ui/separator'
 //using axios to submit the form to API
 
 type IssueFormData = z.infer<typeof createIssueSchema>
@@ -74,12 +75,11 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
     })} className='max-w-2xl space-y-4 mx-auto bg-white/50 p-6 rounded-md'>
         <h1 className='text-center text-xl font-semibold'>Micro-Loan Application</h1>
         
+        <Input id='amount' placeholder='Full Name'/>
         <div className='flex flex-col sm:flex-row gap-4'>
         <Input id='amount' placeholder='Desired Amount'/>
         <Input id='income' placeholder='Annual Income'/>
         </div>
-
-        <Input id='amount' placeholder='Full Name'/>
 
         <div className='flex flex-col sm:flex-row gap-4'>
         <Input id='amount' placeholder='Business Type'/>
@@ -105,6 +105,12 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
           <Label className='text-red-500' htmlFor="concent">Concent to Access your Telecom Data and GeoLocation to build the Metric.</Label>
         </div>
         </div>
+
+        <div className='flex flex-col sm:flex-row gap-4'>
+        <Input id='amount' placeholder='Pan-Card Number'/>
+        </div>
+
+        <Separator/>
         
         <Input defaultValue={issue?.title} placeholder='Title of your Micro-Loan Application form' {...register('title')}/>
         {errors.title && <p className=' text-red-800 font-semibold'>Title is Required</p>}

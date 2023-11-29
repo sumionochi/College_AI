@@ -71,14 +71,25 @@ model Session {
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  name           String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  image          String?
-  accounts       Account[]
-  sessions       Session[]
-  assignedIssues Issue[]
+  id                       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name                     String?
+  email                    String?   @unique
+  emailVerified            DateTime?
+  image                    String?
+  accounts                 Account[]
+  sessions                 Session[]
+  assignedIssues           Issue[]
+  stripe_customer_id       String?
+  stripe_subscription_item String?
+  api_key                  String?
+}
+
+model Log {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String
+  method  String
+  status  Int
+  created DateTime @default(now())
 }
 
 model VerificationToken {
