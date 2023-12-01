@@ -6,17 +6,9 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const customer = await createCustomerIfNull();
-  const hasSub = await hasSubscription();
-  console.log(hasSub ? "yes has sub" : "no, sub")
-  console.log(customer);
-
-  const checkoutLink = await createCheckoutLink(String(customer))
-  console.log(checkoutLink)
   return (
     <div className="">
-      <Navbar />
-      <div className="max-w-5xl m-auto w-full px-4">{children}</div>
+      <div className="max-w-5xl m-auto w-full px-42 text-primary">{children}</div>
     </div>
   );
 }

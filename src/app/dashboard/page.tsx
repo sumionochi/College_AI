@@ -8,7 +8,7 @@ import {
   
   import { PrismaClient } from "@prisma/client";
   import { getServerSession } from "next-auth";
-  import authOptions from '@/app/auth/authOptions'
+  import authOptions from "@/app/auth/authOptions";
   const prisma = new PrismaClient();
   
   export default async function Page() {
@@ -55,7 +55,7 @@ import {
                 You have a subscription!
               </div>
   
-              <div className="divide-y divide-zinc-200 border border-zinc-200 rounded-md">
+              <div className="divide-y bg-stone-400 divide-zinc-200 border border-zinc-200 rounded-md">
                 <p className="text-sm text-black px-6 py-4 font-medium">
                   Current Usage
                 </p>
@@ -64,7 +64,7 @@ import {
                 </p>
               </div>
   
-              <div className="divide-y divide-zinc-200 border border-zinc-200 rounded-md">
+              <div className="divide-y divide-zinc-200 border bg-stone-400 border-zinc-200 rounded-md">
                 <p className="text-sm text-black px-6 py-4 font-medium">
                   API Key
                 </p>
@@ -73,7 +73,7 @@ import {
                 </p>
               </div>
   
-              <div className="divide-y divide-zinc-200 border border-zinc-200 rounded-md">
+              <div className="divide-y bg-stone-400 divide-zinc-200 border border-zinc-200 rounded-md">
                 <p className="text-sm text-black px-6 py-4 font-medium">
                   Log Events
                 </p>
@@ -98,7 +98,7 @@ import {
             <div className="min-h-[60vh] grid place-items-center rounded-lg px-6 py-10 bg-slate-100">
               <Link
                 href={String(checkoutLink)}
-                className="font-medium text-base hover:underline"
+                className="font-medium text-black text-base hover:underline"
               >
                 You have no subscription, checkout now!
               </Link>

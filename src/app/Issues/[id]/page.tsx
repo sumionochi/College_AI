@@ -45,7 +45,7 @@ const IssueDetailPage = async({params}: Props) => {
   }
 
   return (
-    <div className='flex flex-col sm:flex-row w-full'>
+    <div className='flex flex-col justify-center sm:flex-row w-full'>
       <div className='max-w-2xl m-4 p-4 space-y-6 bg-secondary rounded-md'>
         <div className='flex flex-col gap-4 justify-between'>
           <h1 className='font-semibold text-2xl mr-2'>{issue.title}</h1>
@@ -66,15 +66,15 @@ const IssueDetailPage = async({params}: Props) => {
           <ReactMarkdown>{issue.description}</ReactMarkdown>
         </Card>
       </div>
-      <div className='flex-1 flex-col flex items-center bg-secondary/100 rounded-md mt-4 mr-4 h-1/2'>
+      <div className='flex-3 flex-col flex items-center bg-secondary/100 rounded-md mt-4 mr-4 h-1/2'>
         <div className='flex flex-row p-4 gap-6'>
           <div className=''>
           <HoverCard>
                 <HoverCardTrigger asChild>
                   <div className='flex flex-col justify-center cursor-pointer items-center gap-2 p-4 text-center bg-primary/20 rounded-md'>
-                    <h6>Total Sales</h6>
+                    <h6>Annual Expenses</h6>
                     <Info className=''/>
-                    <p className=' text-lg'>462</p>
+                    <p className=' text-lg'>Rs. 1,500,000</p>
                   </div>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-80">
@@ -84,9 +84,9 @@ const IssueDetailPage = async({params}: Props) => {
                       <AvatarFallback>VC</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold">Total Sales</h4>
+                      <h4 className="text-sm font-semibold">Annual Expenses</h4>
                       <p className="text-sm">
-                        The total of all DataSoft products in the current financial year is 462
+                      Annual Expenses of the Loan Applicant: Rs. 1,500,000
                       </p>
                       <div className="flex items-center pt-2">
                         <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
@@ -103,9 +103,9 @@ const IssueDetailPage = async({params}: Props) => {
           <HoverCard>
                 <HoverCardTrigger asChild>
                   <div className='flex  flex-col justify-center cursor-pointer items-center gap-2 p-4 text-center bg-primary/20 rounded-md'>
-                    <h6>Total Value</h6>
+                    <h6>Current Annual Revenue</h6>
                     <Info className=''/>
-                    <p className=' text-lg'>462</p>
+                    <p className=' text-lg'>Rs. 2,000,000</p>
                   </div>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-80">
@@ -115,9 +115,9 @@ const IssueDetailPage = async({params}: Props) => {
                       <AvatarFallback>VC</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold">Total Sales</h4>
+                      <h4 className="text-sm font-semibold">Current Annual Revenue</h4>
                       <p className="text-sm">
-                        The total of all DataSoft products in the current financial year is 462
+                      Current Annual Revenue of Loan Applicant: Rs. 2,000,000
                       </p>
                       <div className="flex items-center pt-2">
                         <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
@@ -134,9 +134,9 @@ const IssueDetailPage = async({params}: Props) => {
           <HoverCard>
                 <HoverCardTrigger asChild>
                   <div className='flex flex-col justify-center cursor-pointer items-center gap-2 p-4 text-center bg-primary/20 rounded-md'>
-                    <h6>Avg. Order Value</h6>
+                    <h6>Current Surpluse</h6>
                     <Info className=''/>
-                    <p className=' text-lg'>462</p>
+                    <p className=' text-lg'>Rs. 500,000</p>
                   </div>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-80">
@@ -146,9 +146,9 @@ const IssueDetailPage = async({params}: Props) => {
                       <AvatarFallback>VC</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold">Total Sales</h4>
+                      <h4 className="text-sm font-semibold">Current Surplus</h4>
                       <p className="text-sm">
-                        The total of all DataSoft products in the current financial year is 462
+                      Loan Applicant is under Current Surplus of: Rs. 500,000
                       </p>
                       <div className="flex items-center pt-2">
                         <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
@@ -165,9 +165,9 @@ const IssueDetailPage = async({params}: Props) => {
           <HoverCard>
                 <HoverCardTrigger asChild>
                   <div className='flex flex-col justify-center cursor-pointer items-center gap-2 p-4 text-center bg-primary/20 rounded-md'>
-                    <h6>Conversion rate</h6>
+                    <h6>Collateral</h6>
                     <Info className=''/>
-                    <p className=' text-lg'>462</p>
+                    <p className=' text-lg'>Rs +150,000</p>
                   </div>
                 </HoverCardTrigger>
                 <HoverCardContent className="w-80">
@@ -177,9 +177,9 @@ const IssueDetailPage = async({params}: Props) => {
                       <AvatarFallback>VC</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold">Total Sales</h4>
+                      <h4 className="text-sm font-semibold">Collateral</h4>
                       <p className="text-sm">
-                        The total of all DataSoft products in the current financial year is 462
+                      Collateral 2: School Buses (Valued at Rs. 150,000 each)
                       </p>
                       <div className="flex items-center pt-2">
                         <CalendarDays className="mr-2 h-4 w-4 opacity-70" />{" "}
@@ -197,7 +197,7 @@ const IssueDetailPage = async({params}: Props) => {
           <DataChart type='line' data={lineChartData}/>
         </div>
         <div className='w-full bg-black/50 rounded-b-md space-y-2 p-4'>
-          <h1 className='text-center text-white text-lg'>Transactions</h1>
+          <h1 className='text-center text-white text-lg'>Spending Expenditure</h1>
           <DataChart type="doughnut" data={doughnutChartData}/>
         </div>
       </div>

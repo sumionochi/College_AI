@@ -53,7 +53,7 @@ export async function createCustomerIfNull() {
         if (!user?.api_key) {
             await prisma.user.update({
                 where: {
-                    id: user?.id
+                    id: user?.id ||"",
                 },
                 data: {
                     api_key: "secret_" + randomUUID()
