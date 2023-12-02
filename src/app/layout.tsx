@@ -12,8 +12,8 @@ import ClientProvider from './ClientProvider'
 const lexend = Lexend({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'LoanEaze.AI : AI-Driven Micro-Loan Credit Platform Utilizing Telecom Data.',
-  description: 'Allowing the unbanked to utilize Telecom data points in exchange for the possibility of obtaining loans that would otherwise be inaccessible.',
+  title: 'Humane.AI',
+  description: 'From silence to being heard. Connecting authorities to victims of abuse, fraud and danger while breaking language barriers with AI.',
 }
 
 export default function RootLayout({

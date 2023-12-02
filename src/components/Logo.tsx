@@ -8,7 +8,7 @@ const Logo = (props: Props) => {
     <Link href={'/'} prefetch={false}>
         <div>
             <p className='font-bold text-2xl text-white px-2 py-1 flex flex-row gap-2 text-grad'>
-                LoanEaze.AI
+                Humane.AI
             </p>
         </div>
     </Link>

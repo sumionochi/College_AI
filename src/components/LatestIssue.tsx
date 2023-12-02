@@ -12,15 +12,15 @@ interface Props {
 
 const LatestIssue = ({open, inProgress,closed}: Props) => {
     const containers: {label:string, value: number, status: Status}[] = [
-        {label: 'Open Issues', value:open, status:'OPEN'},
-        {label: 'In-Progress Issues', value:inProgress, status:'IN_PROGRESS'},
-        {label: 'Closed Issues', value:closed, status:'CLOSED'}
+        {label: 'Open', value:open, status:'OPEN'},
+        {label: 'In Progress', value:inProgress, status:'IN_PROGRESS'},
+        {label: 'Closed', value:closed, status:'CLOSED'}
     ]
   return (
-    <div className='flex flex-row gap-4'>
+    <div className='flex flex-col sm:flex-row gap-4'>
         {containers.map(container=>(
             <Card key={container.label}>
-                <div className='flex flex-col p-4'>
+                <div className='flex flex-row justify-center items-center gap-2 p-4'>
                     <Link href={`/Issues?status=${container.status}`}><p className='text-sm'>{container.label}</p></Link>
                     <h1 className=' text-lg font-bold'>{container.value}</h1>
                 </div>

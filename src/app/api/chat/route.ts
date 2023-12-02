@@ -39,8 +39,8 @@ export async function POST(req: Request) {
     const systemMessage: ChatCompletionMessage = {
       role: "assistant",
       content:
-        "You are an intelligent micro-loan application chatbot app. You answer the user's question based on existing loan applications. " +
-        "The relevant micro-loan applications for this query are:\n" +
+        "You are an intelligent and humane chatbot. You answer the user's question based on existing report applications. " +
+        "The relevant reports filed for this query are:\n" +
         relevantNotes
           .map((note) => `Title: ${note.title}\n\nContent:\n${note.description}`)
           .join("\n\n"),

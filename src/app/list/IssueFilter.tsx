@@ -16,11 +16,11 @@ const IssueFilter = () => {
   return (
     <div>
       <Select onValueChange={(status)=>{const query = status ? `?status=${status}` : ``; router.push('/Issues' + query)}}>
-        <SelectTrigger className='w-40 bg-primary text-secondary'>
-          <SelectValue placeholder="Filter by status..."/>
+        <SelectTrigger className='w-40 bg-secondary text-primary'>
+          <SelectValue className='bg-secondary text-primary' placeholder="Filter by status..."/>
         </SelectTrigger>
-        <SelectContent className='bg-primary text-secondary'>
-            {Props.map((prop,index) => <SelectItem className='bg-primary cursor-pointer text-secondary' key={prop.value !== undefined ? prop.value : index} value={prop.value || 'All'}>
+        <SelectContent className='bg-secondary text-primary'>
+            {Props.map((prop,index) => <SelectItem className='cursor-pointer bg-secondary text-primary' key={prop.value !== undefined ? prop.value : index} value={prop.value || 'All'}>
                 {prop.label}
             </SelectItem>)}
         </SelectContent>

@@ -49,14 +49,14 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   return (
     <div
       className={cn(
-        "bottom-0 right-0 z-10 w-full max-w-[500px] p-1 xl:right-36",
-        open ? "fixed" : "hidden",
+        `fixed bottom-4 left-1/2 transform -translate-x-1/2 sm:bottom-4 sm:left-4 sm:-translate-x-0 sm:translate-y-0 sm:transform-none z-10 mx-auto w-full max-w-[345px] sm:max-w-[500px] p-1`,
+        open ? "fixed" : "hidden", 
       )}
     >
       <button onClick={onClose} className="mb-1 ms-auto block">
-        <XCircle size={30} />
+        <XCircle className="text-primary" size={30} />
       </button>
-      <div className="flex h-[600px] flex-col rounded border bg-background shadow-xl">
+      <div className="flex h-[450px] sm:h-[600px] flex-col rounded-lg border bg-background shadow-xl">
         <div className="mt-3 h-full overflow-y-auto px-3" ref={scrollRef}>
           {messages.map((message) => (
             <ChatMessage message={message} key={message.id} />
@@ -80,11 +80,11 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           {!error && messages.length === 0 && (
             <div className="flex h-full items-center justify-center gap-3 text-center">
               <Bot />
-              Assess Loan Applications with AI
+              Ask Any Question From The Listed Reports
             </div>
           )}
         </div>
-        <form onSubmit={handleSubmit} className="m-3 flex gap-1">
+        <form onSubmit={handleSubmit} className="m-3 flex gap-1 space-x-2">
           <Button
             title="Clear chat"
             variant="outline"
@@ -98,10 +98,10 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           <Input
             value={input}
             onChange={handleInputChange}
-            placeholder="Say something..."
+            placeholder="Ask your Query..."
             ref={inputRef}
           />
-          <Button type="submit">Send</Button>
+          <Button type="submit" className="">Send</Button>
         </form>
       </div>
     </div>

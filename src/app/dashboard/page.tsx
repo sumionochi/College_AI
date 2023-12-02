@@ -47,7 +47,7 @@ import {
     }
   
     return (
-      <main>
+      <main className="p-4 text-center">
         {hasSub ? (
           <>
             <div className="flex flex-col gap-4">

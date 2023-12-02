@@ -46,14 +46,14 @@ const IssueDetailPage = async({params}: Props) => {
 
   return (
     <div className='flex flex-col justify-center sm:flex-row w-full'>
-      <div className='max-w-2xl m-4 p-4 space-y-6 bg-secondary rounded-md'>
+      <div className='max-w-5xl m-4 p-4 space-y-6 bg-secondary rounded-md'>
         <div className='flex flex-col gap-4 justify-between'>
           <h1 className='font-semibold text-2xl mr-2'>{issue.title}</h1>
           {session && <div className='flex flex-col sm:flex-row gap-2'>
             <AssignSelect issues={issue}/>
             <Button className=''>
               <PencilLine className='w-4 mr-2'/>
-              <Link href={`/Issues/${issue.id}/edit`}>Accept</Link>
+              <Link href={`/Issues/${issue.id}/edit`}>Accept/In Progress</Link>
             </Button>
             <DeleteIssueBtn issueId={issue.id}/>
           </div>}
@@ -62,11 +62,11 @@ const IssueDetailPage = async({params}: Props) => {
           <IssueStatusBadge status={issue.status}/>
           <p>{issue.createdAt.toDateString()}</p>
         </div>
-        <Card className='rounded-md p-2 prose'>
-          <ReactMarkdown>{issue.description}</ReactMarkdown>
+        <Card className='rounded-md bg-white p-2 prose'>
+          <ReactMarkdown className={'text-black'}>{issue.description}</ReactMarkdown>
         </Card>
       </div>
-      <div className='flex-3 flex-col flex items-center bg-secondary/100 rounded-md mt-4 mr-4 h-1/2'>
+      {/* <div className='flex-3 flex-col flex items-center bg-secondary/100 rounded-md mt-4 mr-4 h-1/2'>
         <div className='flex flex-row p-4 gap-6'>
           <div className=''>
           <HoverCard>
@@ -200,7 +200,7 @@ const IssueDetailPage = async({params}: Props) => {
           <h1 className='text-center text-white text-lg'>Spending Expenditure</h1>
           <DataChart type="doughnut" data={doughnutChartData}/>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

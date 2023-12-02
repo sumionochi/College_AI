@@ -38,30 +38,30 @@ const IssuePage = async ({searchParams}:Props) => {
   const issueCount = await prisma.issue.count({where: {status}})
   return (
     <div className='flex flex-col items-center'>
-      <div className='p-4 flex flex-col gap-4 w-1/2'>
+      <div className='p-4 flex flex-col gap-4 w-full sm:w-1/2'>
       <LatestIssue open={open} inProgress={inProgress} closed={closed}/>
       <IssueChart open={open} inProgress={inProgress} closed={closed}></IssueChart>
       </div>
-      <div className='p-4 space-y-4 flex flex-1 items-center flex-col w-1/2'>
+      <div className='p-4 space-y-4 flex flex-1 items-center flex-col w-full sm:w-1/2'>
       <div className='flex flex-row items-center max-w-2xl gap-4'>
         <IssueFilter/>
         <AIChatButton/>
       </div>
-      <Table className='bg-primary rounded-lg mx-auto'>
-        <TableCaption className='text-secondary bg-primary p-2 max-w-sm rounded-lg mx-auto'>A list of recent Loan Applications.</TableCaption>
+      <Table className='bg-secondary p-4 text-primary rounded-lg mx-auto'>
+        <TableCaption className='text-primary bg-secondary p-2 max-w-sm rounded-lg mx-auto'>A list of All Reports Filed.</TableCaption>
         <TableHeader>
           <TableRow className='hover:bg-transparent'>
-            <TableHead className='text-secondary'>Issue</TableHead>
-            <TableHead className='text-secondary'>Status</TableHead>
-            <TableHead className='text-secondary hidden md:table-cell'>Created</TableHead>
+            <TableHead className='text-primary'>Issue</TableHead>
+            <TableHead className='text-primary hidden sm:table-cell'>Status</TableHead>
+            <TableHead className='text-primary hidden md:table-cell'>Created</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {issues.map(issue => (
             <TableRow className='hover:bg-transparent cursor-pointer' key={issue.id}>
-              <TableHead className='hover:text-semibold text-secondary underline underline-offset-2 hover:no-underline'><Link href={`/Issues/${(issue.id)}`}>{issue.title}</Link></TableHead>
-              <TableHead className=''><IssueStatusBadge status={issue.status}/></TableHead>
-              <TableHead className='text-secondary hidden md:table-cell'>{issue.createdAt.toDateString()}</TableHead>
+              <TableHead className='hover:text-semibold text-primary underline underline-offset-2 hover:no-underline'><Link href={`/Issues/${(issue.id)}`}>{issue.title}</Link></TableHead>
+              <TableHead className='text-primary hidden sm:table-cell'><IssueStatusBadge status={issue.status}/></TableHead>
+              <TableHead className='text-primary hidden md:table-cell'>{issue.createdAt.toDateString()}</TableHead>
             </TableRow>
           ))}
         </TableBody>

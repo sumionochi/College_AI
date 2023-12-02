@@ -21,6 +21,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '@/components/ui/separator'
+import { Toast } from '@/components/ui/toast'
 //using axios to submit the form to API
 
 type IssueFormData = z.infer<typeof createIssueSchema>
@@ -50,7 +51,7 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
     <div className='p-8 space-y-4 w-full'>
       {error && 
         <div>
-          <Alert className='bg-red-500 text-white outline-none'>
+          <Alert className='bg-red-500 text-white outline-none max-w-2xl'>
             <AlertCircle className="h-4 w-4 text-white" color='#ffffff'/>
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>
@@ -65,17 +66,18 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
         console.log('reached')
         if(issue) axios.patch('/api/issues/' + issue.id, data);
         else await axios.post('/api/issues', data);
-        window.location.href = "/apply"
-        router.push('/apply');
+        window.location.href = "/"
+        router.push('/');
+
       } catch (error) {
         console.error("Error:", error);
         setSubmit(false)
         setError('Something unexpected has happened');
       }      
     })} className='max-w-2xl space-y-4 mx-auto bg-white/50 p-6 rounded-md'>
-        <h1 className='text-center text-xl font-semibold'>Micro-Loan Application</h1>
+        <h1 className='text-center text-xl font-semibold'>File A Report</h1>
         
-        <Input id='amount' placeholder='Full Name'/>
+        {/* <Input id='amount' placeholder='Full Name'/>
         <div className='flex flex-col sm:flex-row gap-4'>
         <Input id='amount' placeholder='Desired Amount'/>
         <Input id='income' placeholder='Annual Income'/>
@@ -110,16 +112,16 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
         <Input id='amount' placeholder='Pan-Card Number'/>
         </div>
 
-        <Separator/>
+        <Separator/> */}
         
-        <Input defaultValue={issue?.title} placeholder='Title of your Micro-Loan Application form' {...register('title')}/>
+        <Input defaultValue={issue?.title} placeholder='Title of your Report' {...register('title')}/>
         {errors.title && <p className=' text-red-800 font-semibold'>Title is Required</p>}
         
-        <Controller  defaultValue={issue?.description} name='description' control={control} render={({field})=><SimpleMDE placeholder='Details about your Micro-Loan Application to support your claim and increase the possibility to receive a compensation.' {...field} className='bg-secondary rounded-lg'/>}/>
+        <Controller  defaultValue={issue?.description} name='description' control={control} render={({field})=><SimpleMDE placeholder='Explain Your Concerns in detail' {...field} className='bg-secondary rounded-lg'/>}/>
         {errors.description && <p className='text-red-800 font-semibold'>Description is Required</p>}
         
         <Button className='rounded-md'>
-          {issue ? 'Update Application ' : 'Submit '}{' '}{!isSubmit ? <p> </p> : <p className='ml-2'><Loader2 className=' animate-spin'/></p>}
+          {issue ? 'Update ' : 'Submit '}{' '}{!isSubmit ? <p> </p> : <p className='ml-2'><Loader2 className=' animate-spin'/></p>}
         </Button>
       </form>
     </div>

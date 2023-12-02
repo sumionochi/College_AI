@@ -18,25 +18,25 @@ const Pagination = ({itemCount,pageSize,currPage}: Props) => {
     const pageCount = Math.ceil(itemCount/pageSize);
     
     const changePage = (page: number)=>{
-        const params = new URLSearchParams(searchParams);
+        const params = new URLSearchParams(searchParams ?? '');
         params.set('page', page.toString());
         router.push('?' + params.toString());
     }
 
     return (
-    <div className='flex flex-col justify-center items-center gap-2'>
-        <h1>Page {currPage} of {pageCount}</h1>
-        <div className='flex flex-row gap-2'>
-        <Button className='p-2 h-10' disabled={currPage===1} onClick={()=> changePage(1)}> 
+    <div className='flex text-primary flex-col justify-center items-center gap-2'>
+        <h1 className='text-secondary'>Page {currPage} of {pageCount}</h1>
+        <div className='flex text-primary flex-row gap-2'>
+        <Button className='p-2 text-primary bg-secondary  h-10' disabled={currPage===1} onClick={()=> changePage(1)}> 
             <ChevronsLeft className=''/>
         </Button>
-        <Button className='p-2 h-10' disabled={currPage===1} onClick={()=> changePage(currPage-1)}> 
+        <Button className='p-2 text-primary bg-secondary  h-10' disabled={currPage===1} onClick={()=> changePage(currPage-1)}> 
             <ChevronLeft/>
         </Button>
-        <Button className='p-2 h-10' disabled={currPage===pageCount} onClick={()=> changePage(currPage+1)}> 
+        <Button className='p-2 text-primary bg-secondary  h-10' disabled={currPage===pageCount} onClick={()=> changePage(currPage+1)}> 
             <ChevronRight/>
         </Button>
-        <Button className='p-2 h-10' disabled={currPage===pageCount} onClick={()=> changePage(pageCount)}> 
+        <Button className='p-2 text-primary bg-secondary h-10' disabled={currPage===pageCount} onClick={()=> changePage(pageCount)}> 
             <ChevronsRight/>
         </Button>
         </div>
