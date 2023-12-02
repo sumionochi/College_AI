@@ -16,21 +16,57 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Why Build this :
+Thing that came from my personal experiences that homeschooling is on the rise around my area. My challenge was to overcome the lacks of personal tutoring, efficient and engaging learning with collaboration at core of the platforms principle.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+What It Does:
+Notebook Creation and Editing:
 
-## Learn More
+Students can create rich-text notebooks with text editing features.
+Notebooks are saved on a dashboard for ongoing learning.
+AI Chatbot:
 
-To learn more about Next.js, take a look at the following resources:
+An AI chatbot is implemented to query questions from all notebooks.
+The chatbot provides precise answers by analyzing and updating on vector database.
+API Gateway:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+An API gateway is established for sharing notes outside the platform.
+Access to the API incurs a 10 rupee charge, forming the business model.
+How It's Built:
+Rich Text Editing:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The platform supports rich text editing features for a dynamic learning experience.
+AI Chatbot:
 
-## Deploy on Vercel
+The chatbot reads context from notebooks in real-time, creating a vector database.
+The blinking effect signifies the chatbot updating its understanding of the context.
+API Gateway:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A subscription model is implemented for sharing notes externally, with a 10 rupee recurring charge.
+Stripe handles the payment aspect, and Prisma Studio manages the databases.
+Technology Stack:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MongoDB is used as the main database.
+Pine code powers the AI agent scoring metric.
+Stripe is integrated for payment transactions.
+Prisma Studio manages all three databases.
+Challenges Faced:
+Lot of Debugging 2, The API gateway was difficult to model how can one share their data of note. Solved it by creating a Assign feature to collaborate.
+AI agent should not hallucinate and provide precise answer. Solved it by using a vector storage database.
+AccomplishmInnovative
+AI Integration: Implemented a pioneering AI chatbot for real-time, context-aware learning from user-generated notebooks, enhancing the platform's educational impact.
+
+Monetization Strategy: Established a successful subscription-based API gateway, introducing a 10 rupee recurring charge for external access, ensuring a sustainable business model.
+
+User-Centric Design: Delivered a responsive, user-friendly interface with rich-text editing features, fostering seamless notebook creation and management for an optimal user experience.
+
+Technological Harmony: Integrated diverse technologies, including Stripe for payments and Prisma Studio for efficient database management, showcasing technical versatility and reliability.ents:
+
+What's Next for College.AI:
+Feature Enrichment: Expand platform capabilities with new features, potentially incorporating collaborative learning tools and advanced AI enhancements.
+
+Global Outreach: Plan for international expansion, reaching a broader audience and diversifying the platform's user base.
+
+Enhanced User Interactivity: Implement interactive elements for improved user engagement, such as forums, live sessions, or community-driven content.
+
+Feedback Integration: Introduce a feedback mechanism to gather user insights, ensuring continuous improvement and responsiveness to user needs.
